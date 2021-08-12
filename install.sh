@@ -8,24 +8,24 @@ mkdir -p ~/.config/nvim
 
 # Install nvim (and its dependencies: pip3, git), Python 3 and ctags (for tagbar)
 echo '[*] App installing Neovim and its dependencies (Python 3 and git), and dependencies for tagbar (exuberant-ctags) ...'
-sudo apt update
-sudo apt install neovim python3 python3-pip python3-venv git curl exuberant-ctags -y
+brew update
+brew install neovim python3 git curl ctags
 
 # Install virtualenv to containerize dependencies for vim-pydocstring (doq) and pep8-style formatting feature (yapf)
 echo '[*] Installing Python dependencies in a virtual environment ...'
-python3 -m venv ~/.config/nvim/env
+sudo python3 -m venv ~/.config/nvim/env
 source ~/.config/nvim/env/bin/activate
 pip install wheel
 pip install yapf doq
 deactivate
 
 # Install Node.js v16.x (for Ubuntu) for coc.vim
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt install -y nodejs
+brew install nodejs
 
 # Install The Silver Searcher (ag), ripgrep (rg) and bat for fzf.vim
-sudo apt install -y silversearcher-ag
-sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep # https://github.com/sharkdp/bat/issues/938
+brew install the_silver_searcher
+# brew install -o Dpkg::Options::="--force-overwrite" bat ripgrep # https://github.com/sharkdp/bat/issues/938
+brew install fzf
 
 # Install vim-plug plugin manager
 echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'

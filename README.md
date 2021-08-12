@@ -1,4 +1,12 @@
-# Optixal's Neovim init.vim
+# Fork of Optixal's Neovim init.vim
+Changed the default install.sh to be used in MacOS. The original install.sh was renamed to install-ubntu.sh  
+The recommened font can be changed to [MesloLGS NF](https://github.com/romkatv/dotfiles-public/blob/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf)  
+Changed the default color theme from dracula to [Cobalt2](https://github.com/GlennLeo/cobalt2)  
+
+Below is the original README.md  
+
+
+## Optixal's Neovim init.vim
 
 Use it as a regular text editor, with [Dracula](https://github.com/dracula/vim) as the main colorscheme, key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle git diff information with [vim-signify](https://github.com/mhinz/vim-signify):
 

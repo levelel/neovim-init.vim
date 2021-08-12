@@ -4,7 +4,9 @@
 call plug#begin()
 
 " Aesthetics - Main
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'tomasiser/vim-code-dark'
+Plug 'GlennLeo/cobalt2'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bryanmylee/vim-colorscheme-icons'
@@ -24,6 +26,7 @@ Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'rhysd/vim-color-spring-night'
 
 " Functionalities
+Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -82,20 +85,22 @@ function! TransparentBackground()
     highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
 endfunction
 
-function! DraculaPMenu()
+function! Colbalt2PMenu()
     highlight Pmenu guibg=#363948
     highlight PmenuSbar guibg=#363948
 endfunction
 
 augroup MyColors
     autocmd!
-    autocmd ColorScheme dracula call DraculaPMenu()
+    autocmd ColorScheme cobalt2 call Colbalt2PMenu()
     "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
 augroup END
 
 " Main Coloring Configurations
-syntax on
-color dracula
+" syntax on
+" color cobalt2
+syntax enable
+colorscheme cobalt2
 
 " Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
 set termguicolors
@@ -303,10 +308,10 @@ function! TrimWhitespace()
     call winrestview(l:save)
 endfunction
 
-" Dracula Mode (Dark)
-function! ColorDracula()
-    let g:airline_theme='dracula'
-    color dracula
+" Cobalt2 Mode (Dark)
+function! ColorCobalt2()
+    let g:airline_theme='cobalt2'
+    color cobalt2
 endfunction
 
 " Seoul256 Mode (Dark & Light)
@@ -340,7 +345,7 @@ nmap <leader>w :TagbarToggle<CR>
 nmap \| <leader>w
 nmap <leader>ee :Colors<CR>
 nmap <leader>ea :AirlineTheme 
-nmap <leader>e1 :call ColorDracula()<CR>
+nmap <leader>e1 :call ColorCobalt2()<CR>
 nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>

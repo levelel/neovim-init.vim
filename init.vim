@@ -6,7 +6,8 @@ call plug#begin()
 " Aesthetics - Main
 " Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'tomasiser/vim-code-dark'
-Plug 'GlennLeo/cobalt2'
+" Plug 'GlennLeo/cobalt2'
+Plug 'Rigellute/rigel'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bryanmylee/vim-colorscheme-icons'
@@ -74,6 +75,7 @@ set textwidth=0
 set hidden
 set number
 set title
+set guicursor=a:blinkwait700-blinkon400-blinkoff250
 
 """ Coloring
 
@@ -85,22 +87,22 @@ function! TransparentBackground()
     highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
 endfunction
 
-function! Colbalt2PMenu()
+function! RigelPMenu()
     highlight Pmenu guibg=#363948
     highlight PmenuSbar guibg=#363948
 endfunction
 
 augroup MyColors
     autocmd!
-    autocmd ColorScheme cobalt2 call Colbalt2PMenu()
+    autocmd ColorScheme rigel call RigelPMenu()
     "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
 augroup END
 
 " Main Coloring Configurations
-" syntax on
-" color cobalt2
+syntax on
+color rigel
 syntax enable
-colorscheme cobalt2
+colorscheme rigel
 
 " Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
 set termguicolors
@@ -308,10 +310,10 @@ function! TrimWhitespace()
     call winrestview(l:save)
 endfunction
 
-" Cobalt2 Mode (Dark)
-function! ColorCobalt2()
-    let g:airline_theme='cobalt2'
-    color cobalt2
+" Rigel Mode (Dark)
+function! ColorRigel()
+    let g:airline_theme='rigel'
+    color rigel
 endfunction
 
 " Seoul256 Mode (Dark & Light)
@@ -345,7 +347,7 @@ nmap <leader>w :TagbarToggle<CR>
 nmap \| <leader>w
 nmap <leader>ee :Colors<CR>
 nmap <leader>ea :AirlineTheme 
-nmap <leader>e1 :call ColorCobalt2()<CR>
+nmap <leader>e1 :call ColorRigel()<CR>
 nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>

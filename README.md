@@ -1,7 +1,11 @@
 # Fork of Optixal's Neovim init.vim
-Changed the default install.sh to be used in MacOS. The original install.sh was renamed to install-ubntu.sh  
-The recommened font can be changed to [MesloLGS NF](https://github.com/romkatv/dotfiles-public/blob/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf)  
-Changed the default color theme from dracula to [Cobalt2](https://github.com/GlennLeo/cobalt2)  
+* Changed the default install.sh to be used in MacOS. The original install.sh was renamed to install-ubntu.sh  
+* The recommened font can be changed to [MesloLGS NF](https://github.com/romkatv/dotfiles-public/blob/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf)  
+* Changed the default color theme from dracula to [Rigel](https://github.com/Rigellute/rigel)  
+* Changed cursor to blinking all the time. `set guicursor=a:blinkwait700-blinkon400-blinkoff250`
+
+Added plugins:  
+* ['haya14busa/incsearch.vim']("https://github.com/haya14busa/incsearch.vim") 
 
 Below is the original README.md  
 

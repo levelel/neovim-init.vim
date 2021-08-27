@@ -24,7 +24,7 @@ brew install nodejs
 
 # Install The Silver Searcher (ag), ripgrep (rg) and bat for fzf.vim
 brew install the_silver_searcher
-# brew install -o Dpkg::Options::="--force-overwrite" bat ripgrep # https://github.com/sharkdp/bat/issues/938
+brew install bat ripgrep
 brew install fzf
 
 # Install vim-plug plugin manager
@@ -56,5 +56,14 @@ rm ~/.config/nvim/init.vim
 # Copy init.vim in current working directory to nvim's config location
 echo '[*] Copying init.vim -> ~/.config/nvim/init.vim'
 cp init.vim ~/.config/nvim/
+
+# install ruby and c-extension for comamnd-t plugins
+cd ~/.config/nvim/plugged/ruby/command-t/ext/command-t
+ruby extconf.rb
+make
+
+# change system key repeat rate to the lowest possible to speed up cursor moving
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 echo -e "[+] Done, welcome to your new \033[1m\033[92mNeovim\033[0m experience! Try it by running: nvim. Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to Iosevka Term Nerd Font, or any other preferred nerd font :)"

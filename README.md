@@ -1,138 +1,45 @@
 # Fork of Optixal's Neovim init.vim
-* Changed the default install.sh to be used in MacOS. The original install.sh was renamed to install-ubntu.sh  
+* Changed the default install.sh to be used in MacOS. The original install.sh was renamed to install-ubuntu.sh  
 * The recommened font can be changed to [MesloLGS NF](https://github.com/romkatv/dotfiles-public/blob/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf)  
 * Changed the default color theme from dracula to [Rigel](https://github.com/Rigellute/rigel)  
 * Changed cursor to blinking all the time. `set guicursor=a:blinkwait700-blinkon400-blinkoff250`
+* Speed up the cursor moving (by hjkl) by setting the system key repeat rate to the lowest. See this [link](https://gist.github.com/hofmannsven/ff21749b0e6afc50da458bebbd9989c5)
+* Allow mouse use
+* Sync clipboard with system
+* Highlight current line
+* Stop newline continution of comments
+* Auto source after making changes to init.vim
 
 Added plugins:  
-* ['haya14busa/incsearch.vim']("https://github.com/haya14busa/incsearch.vim") 
+* ['haya14busa/incsearch.vim'](https://github.com/haya14busa/incsearch.vim) 
+  * This will auto enable and disable the search highlight
+* ['tpope/repeat.vim'](https://github.com/tpope/vim-repeat) 
+* ['airblade/vim-rooter'](https://github.com/airblade/vim-rooter)
+* ['tomtom/tcomment_vim'](https://github.com/tomtom/tcomment_vim)
+* ['norcalli/nvim-colorizer.lua'](https://github.com/norcalli/nvim-colorizer.lua)
+  * to replace ['chrisbra/Colorizer'](https://github.com/chrisbra/Colorizer)
+* ['justinmk/vim-sneak'](https://github.com/justinmk/vim-sneak)
+* ['karb94/neoscroll.nvim'](https://github.com/karb94/neoscroll.nvim)
+  * to replace ['psliwka/vim-smoothie'](https://github.com/psliwka/vim-smoothie)
 
-Below is the original README.md  
 
+Removed plugins:
+* ['junegunn/limelight.vim'](https://github.com/junegunn/limelight.vim)
+* ['junegunn/goyo.vim'](https://github.com/junegunn/goyo.vim)
+* ['dansomething/vim-hackernews'](https://github.com/dansomething/vim-hackernews)
 
-## Optixal's Neovim init.vim
+Notable keybindings and examples from plugins
+* gcc : toggle comment for corrent line, from tcomments
+* z : to invoke sneak iwith operator)
 
-Use it as a regular text editor, with [Dracula](https://github.com/dracula/vim) as the main colorscheme, key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle git diff information with [vim-signify](https://github.com/mhinz/vim-signify):
+Modified keybindings:
+* Use <space> key as leader key
+* Use ctrl + +/- and ctrl + ,. keys to resize windows 
+* Use ctrl + hjkl to navigate between windows
+* Use s and S for vim-sneak motions. cl is equivalent to s in vim, same as cc to S.
+* Mouse scrolling is now equivalent to  Neoscroll's <C-u> and <C-d> for better responsiveness.
 
-![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123687712-d7563a80-d883-11eb-8b95-a623b5636c26.png)
-
-Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.com/neoclide/coc.nvim), a filesystem explorer from [NERDTree](https://github.com/preservim/nerdtree), and a side window from [Tagbar](https://github.com/preservim/tagbar) to browse tags and view the structure of the file you are working on:
-
-![IDE Usage](https://user-images.githubusercontent.com/19287477/123474313-594c2680-d62c-11eb-9b6f-65eca8b3bf04.png)
-
-Quickly find files or strings by fuzzy searching with [fzf.vim](https://github.com/junegunn/fzf.vim) in a beautiful pop-up window:
-
-![FZF Usage](https://user-images.githubusercontent.com/19287477/123687752-dfae7580-d883-11eb-8a46-aaf458a67ca2.png)
-
-Or perhaps.. ~~procrastinate~~ multitask with [vim-hackernews](https://github.com/dansomething/vim-hackernews) at the side while coding:
-
-![Hacker News Usage](https://user-images.githubusercontent.com/19287477/123479447-88b26180-d633-11eb-988a-bd4cf772dccc.png)
-
-Transparent/translucent terminal background support (uncomment `autocmd ColorScheme * call TransparentBackground()`), example from WSL2 running Ubuntu on Windows:
-
-![Transparent Usage](https://user-images.githubusercontent.com/19287477/123476545-6f0f1b00-d62f-11eb-8a3b-51589ac78cd7.png)
-
-## Installing and Updating
-
-### Install
-
-#### Automated Installation
-
-`./install.sh`
-
-Automatically installs my configuration, along with dependencies into your system. Tested on Ubuntu 20.04. I highly suggest reading and understanding each line of the installation script before running it, especially if you are using other Linux distros, or macOS. For macOS, manually run the commands, and use `homebrew` instead of `apt`.
-
-#### Post Installation
-
-##### Download and install a Nerd Font
-
-Airline and devicons require a patched font, or Nerd Font in order to display properly. Run `./font_install.sh` to download and install Iosevka Term Nerd Font into your `~/.fonts` directory, or run the command manually:
-
-```sh
-curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
-```
-
-Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular". If the font is not there, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead.
-
-##### Install coc extensions
-
-To get autocompletion capabilities for the various languages you work with, you need to install coc extensions for coc. If you code in JS, do frontend, and write Python, run the following within nvim:
-
-```
-:CocInstall -sync coc-tsserver coc-json coc-html coc-css coc-pyright
-```
-
-Find out more about coc extensions and what is available over [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
-
-##### Alias vim
-
-It may be easier for you to type `vim` instead of `nvim` everytime you edit a file, so aliasing it could save you some trouble. Add an alias to your bashrc/zshrc/somerc or aliases file to alias nvim to vim:
-
-```sh
-echo "alias vim='nvim'" >> ~/.bashrc
-```
-
-##### Fix nvim + tmux issues
-
-Running nvim within a tmux session may cause certain unwanted issues like escape key lag, or displaying wrong colors. Run `cat .tmux.conf >> ~/.tmux.conf` or manually add these to your `~/.tmux.conf` configuration file to address the issues:
-
-```sh
-set -sg escape-time 5 # fix vim esc delay
-set -g default-terminal "screen-256color" # ensures vim uses right $TERM color, default is "screen"
-set -ga terminal-overrides ",*256col*:Tc" # fixes vim reproducing slightly wrong colors in tmux
-```
-
-### Update
-
-#### Updates from me
-
-I occasionally update and push my new configurations here. If you want to receive the updates, you can pull the latest init.vim and replace the one you have.
-
-```sh
-git pull
-cp init.vim ~/.config/nvim/
-```
-
-#### vim-plug commands for plugins
-
-Run these to install new plugins, update or delete existing plugins, or upgrade vim-plug itself.
-
-* Install plugins: `:PlugInstall` in nvim
-* Update plugins: `:PlugUpdate` in nvim
-* Delete unused plugins: `:PlugClean` in nvim
-* Update vim-plug itself: `:PlugUpgrade` in nvim
-
-### Mapped Commands in Normal Mode
-
-Most custom commands expand off my map leader, keeping nvim as vanilla as possible.
-
-* `,` - Map leader, nearly all my custom mappings starts with pressing the comma key
-* `,q` or `\\` - Toggle sidebar filetree viewer (NERDTree)
-* `,w` or `|` - Toggle sidebar classes, functions, variables list (TagBar)
-* `,ee` - Change colorscheme (with fzf fuzzy finder)
-* `,ea` - Change Airline theme
-* `,e1` - Color mode: Dracula (Dark)
-* `,e2` - Color mode: Seoul256 (Between Dark & Light)
-* `,e3` - Color mode: Forgotten (Light)
-* `,e4` - Color mode: Zazen (Black & White)
-* `,r` - Refresh/source ~/.config/nvim/init.vim
-* `,t` - Trim all trailing whitespaces
-* `,y` - Opens HackerNews in a new vertical split window (vim-hackernews)
-* `,p` - Automatically generate Python docstrings while cursor is hovering above a Python function or class (vim-pydocstring)
-* `,a` - Auto align variables (vim-easy-align), eg. do `,a=` while your cursor is on a bunch of variables to align their equal signs
-* `,s` - Fuzzy find for a string in your current working directory (fzf)
-* `,d` - Fuzzy find a file (fzf)
-* `,f` - Fuzzy find for a string in the current file/buffer (fzf)
-* `,g` - Toggle Goyo mode, super clean and minimalistic display mode (Goyo)
-* `,h` - Toggle rainbow parentheses highlighting (rainbow-parentheses.vim)
-* `,j` - Set filetype to "journal" which makes the syntax highlighting beautiful when working on regular text files and markdown
-* `,k` - Toggle coloring of hex colors
-* `,l` - Toggle Limelight mode, highlight the lines near cursor only (Limelight)
-* `,x` - Auto format Python scripts (yapf)
-* `,,` - Remove highlights
-* `,c<Space>` - Toggle comment for current line (Nerd Commenter)
-* `,$s` - New terminal in horizontal split
-* `,$v` - New terminal in vertical split
-* `<Alt-r/c>` - Toggle RGB color picker (vCoolor) (uses GTK+, requires yad or zenity)
-* `<Tab>` - Next buffer
-* `<Shift-Tab>` - Previous buffer
+After installation:
+* Install extensions for Coc
+* Install [Neovide](https://github.com/neovide/neovide) (recommended if you need a vim gui)
+  * Run it with arugment `--multigrid` to let Neovide to take control of scrolling animation. Neovide is much smoother than Neovim running in terminals.

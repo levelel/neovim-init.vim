@@ -34,12 +34,12 @@
 * z : to invoke sneak with operator)
 
 ## Modified keybindings:
-* Use <space> key as leader key
-* Use <leader>th and <leader>tk to change two split windows from vert to horiz and from horiz to vert respectively
+* Use \<space\> key as leader key
+* Use \<leader\>th and \<leader\>tk to change two split windows from vert to horiz and from horiz to vert respectively
 * Use ctrl + +/- and ctrl + ,. keys to resize windows 
 * Use ctrl + hjkl to navigate between windows
 * Use s and S for vim-sneak motions. cl is equivalent to s in vim, same as cc to S. Replace f/F/t/T with sneak's single character search. Use z with operators.
-* Mouse scrolling is now equivalent to  Neoscroll's <C-u> and <C-d> for better responsiveness.
+* Mouse scrolling is now equivalent to  Neoscroll's \<C-u\> and \<C-d\> for better responsiveness.
 
 ## After installation:
 * Install extensions for Coc

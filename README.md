@@ -45,3 +45,6 @@
 * Install extensions for Coc
 * Install [Neovide](https://github.com/neovide/neovide) (recommended if you need a vim gui)
   * Run it with arugment `--multigrid` to let Neovide to take control of scrolling animation. Neovide is much smoother than Neovim running in terminals.
+
+## Credits
+* Original [Optixal's Neovim.init.vim](https://github.com/Optixal/neovim-init.vim/)
